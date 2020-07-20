@@ -42,7 +42,7 @@ class Reminder extends Component {
         current: '',
         email: this.props.route.params.email,
         id: this.props.route.params.id,
-        color: ['#EB8686','#F8D38B','#94F88B','#8BBDF8','#8B96F8','#C88BF8','#FFBFED']
+        color: ['#F5CDE6','#FAF8F0', '#CFF5EA','#A7E9E1','#F1E1C9','#CFECF5','#A9E2F5','#72D2E3','#A6EBE7','#FAF8ED','#CAAAF3','#E9687E','#FDC2B1','#FDFAF3','#F7E298']
     }
 
     onSubmit = (editedItem) => {
@@ -257,7 +257,7 @@ class Reminder extends Component {
 
     addAlarm = () => {
         let res = this.state.alarms
-        let col = this.state.color[Math.floor(Math.random()*7)]
+        let col = this.state.color[Math.floor(Math.random()*16)]
         this.setState({
             alarms: [...this.state.alarms, {title: 'Alarm ' + this.state.count.toString(),
                 switch: false,

@@ -30,7 +30,7 @@ class AddModule extends Component {
         currID: 0,
         updated: false,
         exams: [],
-        color: ['#EB8686','#F8D38B','#94F88B','#8BBDF8','#8B96F8','#C88BF8','#FFBFED','#CEF88B','#8BF8D1','#F8B28B']
+        color: ['#F5CDE6','#FAF8F0', '#CFF5EA','#A7E9E1','#F1E1C9','#CFECF5','#A9E2F5','#72D2E3','#A6EBE7','#FAF8ED','#CAAAF3','#E9687E','#FDC2B1','#FDFAF3','#F7E298']
     }
 
     updateDatabase=()=> {
@@ -112,7 +112,7 @@ class AddModule extends Component {
 
     addModule = (module) => {
         let res = this.state.chosenModule
-        let col = this.state.color[Math.floor(Math.random()*10)]
+        let col = this.state.color[Math.floor(Math.random()*16)]
         this.setState({
             chosenModule: [...this.state.chosenModule, {
                 newID: this.state.currID,
@@ -405,7 +405,7 @@ class AddModule extends Component {
                     this.state.navigation.setParams({modules: this.state.chosenModule});
                     this.state.navigation.push('ExpandCalendar',{modules:this.state.chosenModule})
                 }}>
-                    <Text style={{color:'#53D3EF'}}>Go to Calendar</Text>
+                    <Text style={{color:'#53D3EF'}}>+ Add module to calendar</Text>
                 </TouchableOpacity>
                 <Modal animationType="fade" visible={this.state.isModalVisible}
                        onRequestClose={() => this.setModalVisible(false)}>
