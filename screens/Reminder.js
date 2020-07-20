@@ -257,7 +257,7 @@ class Reminder extends Component {
 
     addAlarm = () => {
         let res = this.state.alarms
-        let col = this.state.color[Math.floor(Math.random()*16)]
+        let col = this.state.color[Math.floor(Math.random()*15)]
         this.setState({
             alarms: [...this.state.alarms, {title: 'Alarm ' + this.state.count.toString(),
                 switch: false,

@@ -112,7 +112,7 @@ class AddModule extends Component {
 
     addModule = (module) => {
         let res = this.state.chosenModule
-        let col = this.state.color[Math.floor(Math.random()*16)]
+        let col = this.state.color[Math.floor(Math.random()*15)]
         this.setState({
             chosenModule: [...this.state.chosenModule, {
                 newID: this.state.currID,
