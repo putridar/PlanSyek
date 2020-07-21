@@ -358,6 +358,7 @@ class Reminder extends Component {
             return item
         })
         this.setState({ alarms: newData });
+        this.updateDatabase(newData)
         this.cancelNotif()
     }
 

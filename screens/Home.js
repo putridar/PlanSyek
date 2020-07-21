@@ -22,6 +22,17 @@ export default class Home extends Component {
             //    {title:'MA1101R Lecture', time: "30 Jun 2020 12:00", lec:true, lab: true, tut: true, rec:true}],
             schedule: [{data:
                     [{duration: "1h",
+                        hour:"1200",
+                        schedule:{
+                            ClassNo:"01",
+                            DayText:"Monday",
+                            EndTime:"1300",
+                            LessonType:"Tutorial",
+                            StartTime: "1200",
+                            Venue:"AS3-0620",
+                            WeekText:"Every Week",
+                            title: "MA1101R Tutorial"}},
+                        {duration: "1h",
                         hour:"1500",
                         schedule:{
                             ClassNo:"01",
@@ -31,18 +42,7 @@ export default class Home extends Component {
                             StartTime: "1500",
                             Venue:"AS3-0620",
                             WeekText:"Every Week",
-                            title: "CS1010S Tutorial"}},
-                        {duration: "1h",
-                            hour:"1200",
-                            schedule:{
-                                ClassNo:"01",
-                                DayText:"Monday",
-                                EndTime:"1300",
-                                LessonType:"Tutorial",
-                                StartTime: "1200",
-                                Venue:"AS3-0620",
-                                WeekText:"Every Week",
-                                title: "MA1101R Tutorial"}}],
+                            title: "CS1010S Tutorial"}}],
                 title: moment()
                     .utcOffset('+08:00')
                     .format(`YYYY-MM-DD`)}],
@@ -120,6 +120,30 @@ export default class Home extends Component {
                 hsl = curr.data
             }
         }
+        if (sch.length === 0){
+            hsl = [{duration: "1h",
+                hour:"1500",
+                schedule:{
+                    ClassNo:"01",
+                    DayText:"Monday",
+                    EndTime:"1600",
+                    LessonType:"Tutorial",
+                    StartTime: "1500",
+                    Venue:"AS3-0620",
+                    WeekText:"Every Week",
+                    title: "CS1010S Tutorial"}},
+                {duration: "1h",
+                    hour:"1200",
+                    schedule:{
+                        ClassNo:"01",
+                        DayText:"Monday",
+                        EndTime:"1300",
+                        LessonType:"Tutorial",
+                        StartTime: "1200",
+                        Venue:"AS3-0620",
+                        WeekText:"Every Week",
+                        title: "MA1101R Tutorial"}}]
+        }
         this.setState({agenda:hsl})
     }
 
@@ -145,7 +169,6 @@ export default class Home extends Component {
             <View style = {styles.container}>
                 <View style={styles.dateBox}>
                     <Text style = {styles.dateText}>{dayName}, {date}</Text>
-                    <Text style = {styles.timeText}>{currTime}</Text>
                 </View>
                 <SafeAreaView style = {styles.scheduleContainer}>
                     <Text style = {styles.titleText}>Today Schedule</Text>
@@ -158,6 +181,9 @@ export default class Home extends Component {
                         <Text style={styles.travelText}>How to go there?</Text>
                     </TouchableOpacity>
                 </SafeAreaView>
+                <TouchableOpacity onPress={()=>this.addSch(this.state.schedule)}>
+                    <Text>Refresh</Text>
+                </TouchableOpacity>
                 <SafeAreaView style = {styles.scheduleContainer}>
                     <Text style = {styles.titleText}>Notifications</Text>
                     <FlatList
@@ -236,6 +262,7 @@ const styles = StyleSheet.create ({
     dateBox: {
         backgroundColor:'#B5FDF9',
         borderRadius: 5,
+        justifyContent:'center'
     },
     scheduleBox: {
         flexDirection: 'row',

@@ -112,7 +112,7 @@ class AddModule extends Component {
 
     addModule = (module) => {
         let res = this.state.chosenModule
-        let col = this.state.color[Math.floor(Math.random()*15)]
+        let col = this.state.color[Math.floor(Math.random()*15 )]
         this.setState({
             chosenModule: [...this.state.chosenModule, {
                 newID: this.state.currID,
@@ -405,7 +405,7 @@ class AddModule extends Component {
                     this.state.navigation.setParams({modules: this.state.chosenModule});
                     this.state.navigation.push('ExpandCalendar',{modules:this.state.chosenModule})
                 }}>
-                    <Text style={{color:'#53D3EF'}}>+ Add module to calendar</Text>
+                    <Text style={{color:'#53D3EF'}}>Switch to calendar</Text>
                 </TouchableOpacity>
                 <Modal animationType="fade" visible={this.state.isModalVisible}
                        onRequestClose={() => this.setModalVisible(false)}>

@@ -563,6 +563,9 @@ export default class ExpandCalendar extends Component {
                                   onPress={() => this.state.navigation.navigate('Add Module')}>
                     <Text style={styles.addText}>+ Add Modules</Text>
                 </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={{textAlign:'center'}}>Refresh</Text>
+                </TouchableOpacity>
                 {/*<Text>{test}</Text>*/}
                 <Modal animationType="fade" visible={this.state.isModalVisible}
                        onRequestClose={() => this.setModalVisible(false)}>

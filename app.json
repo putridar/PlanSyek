@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "proj",
+    "name": "Plansyek",
     "slug": "proj",
     "platforms": [
       "ios",
@@ -9,7 +9,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./Pics/plansyek_logo.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -27,7 +27,13 @@
         "UIBackgroundModes": [
           "audio"
         ]
-      }
+      },
+      "bundleIdentifier": "com.infinite.plansyek",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.infinite.plansyek",
+      "versionCode": 1
     }
   }
 }
