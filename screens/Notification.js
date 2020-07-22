@@ -587,7 +587,6 @@ const styles = StyleSheet.create ({
         flexDirection: 'row'
     },
     alarmText: {
-        fontFamily: 'Roboto',
         fontSize: 18,
         color: 'black',
         marginTop: 10,
@@ -616,11 +615,9 @@ const styles = StyleSheet.create ({
     },
     notifTextUnread: {
         fontWeight: 'bold',
-        fontFamily: 'Roboto',
         fontSize: 18
     },
     notifTextRead: {
-        fontFamily: 'Roboto',
         fontSize: 18
     },
     moduleBox: {

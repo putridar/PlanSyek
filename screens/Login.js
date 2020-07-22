@@ -149,7 +149,6 @@ const styles = StyleSheet.create({
     },
     loginText: {
         fontSize: 20,
-        fontFamily: 'Roboto',
         textAlign: 'center'
     }
 })

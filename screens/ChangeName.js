@@ -63,7 +63,6 @@ const styles = StyleSheet.create ({
         marginBottom: 60
     },
     titleText: {
-        fontFamily: 'Roboto',
         fontSize: 20,
         color: 'black',
         marginTop: 10,
@@ -90,7 +89,6 @@ const styles = StyleSheet.create ({
     },
     buttonText: {
         fontSize: 20,
-        fontFamily: 'Roboto',
         textAlign: 'center'
     }
 })

@@ -42,14 +42,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         fontSize: 24,
-        fontFamily:'Roboto',
 
     },
     confirmButton: {
         textAlign: 'center',
         alignSelf: 'center',
         fontSize: 24,
-        fontFamily:'Roboto',
         backgroundColor: '#53D3EF',
         marginTop: 20
     }

@@ -85,7 +85,6 @@ const styles = StyleSheet.create ({
     },
     menuText: {
       fontSize: 18,
-      fontFamily: 'Roboto'
     },
     bodyContainer: {
         marginTop: 30,
@@ -100,7 +99,6 @@ const styles = StyleSheet.create ({
     },
     footerText: {
         fontSize: 14,
-        fontFamily: 'Roboto',
         color: '#36A5C9'
     }
 })

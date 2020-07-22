@@ -50,7 +50,6 @@ const styles = StyleSheet.create ({
         flexDirection: 'row'
     },
     titleText: {
-        fontFamily: 'Roboto',
         fontSize: 18,
         color: 'black',
         marginBottom: 10,

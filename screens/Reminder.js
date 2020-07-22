@@ -653,7 +653,6 @@ const styles = StyleSheet.create ({
         flexDirection: 'row'
     },
     alarmText: {
-        fontFamily: 'Roboto',
         fontSize: 18,
         color: 'black',
         marginTop: 10,

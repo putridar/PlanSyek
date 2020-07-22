@@ -212,7 +212,6 @@ const styles = StyleSheet.create ({
         position: 'absolute',
         width: 122,
         height: 61,
-        fontFamily: 'Roboto',
         fontSize: 18,
         alignSelf: 'center',
         color: 'white',
@@ -231,12 +230,10 @@ const styles = StyleSheet.create ({
     },
     timeText: {
         fontSize:20,
-        fontFamily: 'Roboto',
         textAlign: 'center'
     },
     dateText: {
         fontSize:28,
-        fontFamily: 'Roboto',
         textAlign: 'center'
     },
     scheduleContainer: {
