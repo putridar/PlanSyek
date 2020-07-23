@@ -39,7 +39,7 @@ class AddModule extends Component {
 
     componentDidMount() {
         Promise.all([
-            fetch('https://api.nusmods.com/2018-2019/2/timetable.json'),
+            fetch('https://api.nusmods.com/2018-2019/1/timetable.json'),
             fetch('https://api.nusmods.com/2018-2019/1/examTimetableRaw.json')
         ])
             .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
@@ -112,7 +112,7 @@ class AddModule extends Component {
 
     addModule = (module) => {
         let res = this.state.chosenModule
-        let col = this.state.color[Math.floor(Math.random()*15 )]
+        let col = this.state.color[Math.floor(Math.random()*15)]
         this.setState({
             chosenModule: [...this.state.chosenModule, {
                 newID: this.state.currID,
@@ -122,8 +122,8 @@ class AddModule extends Component {
                 tutorial: '',
                 lab: '',
                 recitation: '',
-                examDate: module.exam.Date,
-                examTime: module.exam.Time,
+                examDate: (module.exam=='')? module.exam.Date:'',
+                examTime: module.exam? module.exam.Time:'',
                 color: col
             }]
         })
@@ -185,8 +185,8 @@ class AddModule extends Component {
         }
         if(item.tutorial !== '') {
             s = s+'Tutorial: ' + item.tutorial.ClassNo + ' (' + item.tutorial.DayText + ' ' +
-            item.tutorial.WeekText + ', ' + item.tutorial.StartTime + '-' + item.tutorial.EndTime + ')' +
-            ' at ' + item.tutorial.Venue + '\n\n'
+                item.tutorial.WeekText + ', ' + item.tutorial.StartTime + '-' + item.tutorial.EndTime + ')' +
+                ' at ' + item.tutorial.Venue + '\n\n'
         }
         if(item.lab !== ''){
             s = s+'Laboratory: ' + item.lab.ClassNo + ' (' + item.lab.DayText + ' ' +
@@ -198,8 +198,11 @@ class AddModule extends Component {
                 item.recitation.WeekText + ', ' + item.recitation.StartTime + '-' + item.recitation.EndTime + ')' +
                 ' at ' + item.recitation.Venue + '\n'
         }
-        if (item.exam !== '' || !item.exam){
+        if (item.examDate !== '' && item.examTime != ''){
             s = s + 'Your exam will be on ' + item.examDate + ' at ' + item.examTime + '\n'
+        }
+        else {
+            s = s + 'No exam data for this module' + '\n'
         }
         if (s===''){
             return 'You have not chosen the timeslot for this module'
@@ -405,50 +408,50 @@ class AddModule extends Component {
                     this.state.navigation.setParams({modules: this.state.chosenModule});
                     this.state.navigation.push('ExpandCalendar',{modules:this.state.chosenModule})
                 }}>
-                    <Text style={{color:'#53D3EF'}}>Switch to calendar</Text>
+                    <Text style={{color:'#53D3EF'}}>+ Add module to calendar</Text>
                 </TouchableOpacity>
                 <Modal animationType="fade" visible={this.state.isModalVisible}
                        onRequestClose={() => this.setModalVisible(false)}>
                     <ScrollView style={styles.chooseFL}>
                         <TouchableOpacity style={styles.titleButton} onPress={() => this.setState({ openLec: !this.state.openLec })}>
-                        <Text style={styles.chooseText}> Choose Lecture </Text>
+                            <Text style={styles.chooseText}> Choose Lecture </Text>
                             <Text style={{fontSize:16}}>+</Text>
                         </TouchableOpacity>
                         <Expand value={this.state.openLec}>
-                        <FlatList
-                            keyExtractor={(item, index) => String(index)}
-                            data={this.state.chosenModule.filter(mod => mod.name === this.state.editedItem.name)}
-                            renderItem={this.chooseLecture}/>
+                            <FlatList
+                                keyExtractor={(item, index) => String(index)}
+                                data={this.state.chosenModule.filter(mod => mod.name === this.state.editedItem.name)}
+                                renderItem={this.chooseLecture}/>
                         </Expand>
                         <TouchableOpacity style={styles.titleButton} onPress={() => this.setState({ openTut: !this.state.openTut })}>
-                        <Text style={styles.chooseText}> Choose Tutorial </Text>
+                            <Text style={styles.chooseText}> Choose Tutorial </Text>
                             <Text style={{fontSize:16}}>+</Text>
                         </TouchableOpacity>
                         <Expand value={this.state.openTut}>
-                        <FlatList
-                            keyExtractor={(item, index) => String(index)}
-                            data={this.state.chosenModule.filter(mod => mod.name === this.state.editedItem.name)}
-                            renderItem={this.chooseTutorial}/>
+                            <FlatList
+                                keyExtractor={(item, index) => String(index)}
+                                data={this.state.chosenModule.filter(mod => mod.name === this.state.editedItem.name)}
+                                renderItem={this.chooseTutorial}/>
                         </Expand>
                         <TouchableOpacity style={styles.titleButton} onPress={() => this.setState({ openLab: !this.state.openLab })}>
-                        <Text style={styles.chooseText}> Choose Lab </Text>
+                            <Text style={styles.chooseText}> Choose Lab </Text>
                             <Text style={{fontSize:16}}>+</Text>
                         </TouchableOpacity>
                         <Expand value={this.state.openLab}>
-                        <FlatList
-                            keyExtractor={(item, index) => String(index)}
-                            data={this.state.chosenModule.filter(mod => mod.name === this.state.editedItem.name)}
-                            renderItem={this.chooseLab}/>
+                            <FlatList
+                                keyExtractor={(item, index) => String(index)}
+                                data={this.state.chosenModule.filter(mod => mod.name === this.state.editedItem.name)}
+                                renderItem={this.chooseLab}/>
                         </Expand>
                         <TouchableOpacity style={styles.titleButton} onPress={() => this.setState({ openRec: !this.state.openRec })}>
-                        <Text style={styles.chooseText}> Choose Recitation </Text>
+                            <Text style={styles.chooseText}> Choose Recitation </Text>
                             <Text style={{fontSize:16}}>+</Text>
                         </TouchableOpacity>
                         <Expand value={this.state.openRec}>
-                        <FlatList
-                            keyExtractor={(item, index) => String(index)}
-                            data={this.state.chosenModule.filter(mod => mod.name === this.state.editedItem.name)}
-                            renderItem={this.chooseRecitation}/>
+                            <FlatList
+                                keyExtractor={(item, index) => String(index)}
+                                data={this.state.chosenModule.filter(mod => mod.name === this.state.editedItem.name)}
+                                renderItem={this.chooseRecitation}/>
                         </Expand>
                         <View style={{flexDirection:'row'}}>
                             <TouchableOpacity style ={styles.editButton}
@@ -489,6 +492,7 @@ const styles = StyleSheet.create ({
         position: 'absolute',
         width: 122,
         height: 61,
+        fontFamily: 'Roboto',
         fontSize: 18,
         alignSelf: 'center',
         color: 'white',
@@ -507,9 +511,11 @@ const styles = StyleSheet.create ({
     },
     timeText: {
         fontSize:20,
+        fontFamily: 'Roboto'
     },
     dateText: {
         fontSize:28,
+        fontFamily: 'Roboto'
     },
     moduleList: {
         flexDirection: 'row',
@@ -592,4 +598,3 @@ const styles = StyleSheet.create ({
         borderRadius: 5
     }
 })
-

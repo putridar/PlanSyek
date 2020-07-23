@@ -42,7 +42,9 @@ class SignUp extends React.Component {
                             name: '',
                             email: '',
                             password: '',
-                        })).catch(err => console.error(err)).catch(error => {console.log(error)
+                        }))
+                        .then(alert("Sign up successful!"))
+                        .catch(err => console.error(err)).catch(error => {console.log(error)
                         alert(error)})
                 }
             })

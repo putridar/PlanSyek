@@ -56,7 +56,8 @@ class Login extends Component {
                     this.props.navigation.push('PlanSyek', {id:currId[0].id,email:this.state.currEmail})
                 }
             })
-            .catch(error => {console.log(error)})
+            .catch(error => {console.log(error)
+                alert(error)})
     }
 
     render() {
@@ -149,6 +150,7 @@ const styles = StyleSheet.create({
     },
     loginText: {
         fontSize: 20,
+        fontFamily: 'Roboto',
         textAlign: 'center'
     }
 })
