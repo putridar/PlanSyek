@@ -39,8 +39,8 @@ class AddModule extends Component {
 
     componentDidMount() {
         Promise.all([
-            fetch('https://api.nusmods.com/2018-2019/1/timetable.json'),
-            fetch('https://api.nusmods.com/2018-2019/1/examTimetableRaw.json')
+            fetch('https://api.nusmods.com/2018-2019/2/timetable.json'),
+            fetch('https://api.nusmods.com/2018-2019/2/examTimetableRaw.json')
         ])
             .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
             .then(async ([res1, res2]) => {
