@@ -286,18 +286,20 @@ class Reminder extends Component {
         this.setState({alarms:alarm})
         let res = this.state.alarms
         for (let x = 0; x<module.length; x++) {
-            let col = this.state.color[Math.floor(Math.random()*7)]
-            if(this.state.alarms.length === 0 || this.state.alarms.filter((item) => item.title === module[x].name + ' Final Exam').length === 0){
-                this.setState({alarms: [...this.state.alarms, {title: module[x].name + ' Final Exam',
+            if (module[x].exam != 'nil'){
+                let col = this.state.color[Math.floor(Math.random()*7)]
+                if(this.state.alarms.length === 0 || this.state.alarms.filter((item) => item.title === module[x].name + ' Final Exam').length === 0){
+                    this.setState({alarms: [...this.state.alarms, {title: module[x].name + ' Final Exam',
+                            switch: false,
+                            alarmDate:moment(module[x].exam.Date, 'DD/MM/YYYY').format(`DD MMM YYYY`),
+                            alarmTime: moment(module[x].exam.Time,'h:mmA').format('HH:mm'),
+                            color: col}]})
+                    res.push({title: module[x].name + ' Final Exam',
                         switch: false,
-                        alarmDate:moment(module[x].examDate, 'DD/MM/YYYY').format(`DD MMM YYYY`),
-                        alarmTime: moment(module[x].examTime,'h:mmA').format('HH:mm'),
-                        color: col}]})
-                res.push({title: module[x].name + ' Final Exam',
-                    switch: false,
-                    alarmDate: moment(module[x].examDate, 'DD/MM/YYYY').format(`DD MMM YYYY`),
-                    alarmTime: moment(module[x].examTime,'h:mmA').format('HH:mm'),
-                    color:col})
+                        alarmDate: moment(module[x].exam.Date, 'DD/MM/YYYY').format(`DD MMM YYYY`),
+                        alarmTime: moment(module[x].exam.Time,'h:mmA').format('HH:mm'),
+                        color:col})
+                }
             }
         }
         this.updateDatabase(res)

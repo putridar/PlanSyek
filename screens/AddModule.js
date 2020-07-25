@@ -54,11 +54,11 @@ class AddModule extends Component {
                     parseMod['name'] = el['ModuleCode'];
                     parseMod['schedule'] = el['Timetable'];
                     var curr = res2.filter((item) => {return item.ModuleCode === el['ModuleCode']})
-                    if (curr != []){
+                    if (curr[0]){
                         parseMod['exam'] = curr[0];
                     }
                     else{
-                        parseMod['exam'] = '';
+                        parseMod['exam'] = 'nil';
                     }
                     counter++;
                     result.push(parseMod)
@@ -122,8 +122,7 @@ class AddModule extends Component {
                 tutorial: '',
                 lab: '',
                 recitation: '',
-                examDate: (module.exam=='')? module.exam.Date:'',
-                examTime: module.exam? module.exam.Time:'',
+                exam: module.exam,
                 color: col
             }]
         })
@@ -198,8 +197,8 @@ class AddModule extends Component {
                 item.recitation.WeekText + ', ' + item.recitation.StartTime + '-' + item.recitation.EndTime + ')' +
                 ' at ' + item.recitation.Venue + '\n'
         }
-        if (item.examDate !== '' && item.examTime != ''){
-            s = s + 'Your exam will be on ' + item.examDate + ' at ' + item.examTime + '\n'
+        if (item.exam !== 'nil'){
+            s = s + 'Your exam will be on ' + item.exam.Date + ' at ' + item.exam.Time + '\n'
         }
         else {
             s = s + 'No exam data for this module' + '\n'
@@ -229,7 +228,8 @@ class AddModule extends Component {
                                   this.setEditedItem(item)}}>
                 <Text style={{textAlign:'center'}}>{item.name}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style ={{justifyContent:'center'}} onPress={()=>this.viewSchedule(item)}>
+            <TouchableOpacity style ={{justifyContent:'center'}} onPress={()=>{this.viewSchedule(item)
+                                                                                console.log("exam is on: " + item.exam)}}>
                 <Text style={{color:'#53D3EF'}}>Tap to view schedule</Text>
             </TouchableOpacity>
         </View>
@@ -357,7 +357,8 @@ class AddModule extends Component {
                 <Text> Add Module </Text>
                 <SearchableDropdown
                     onTextChange={text => console.log(text)}
-                    onItemSelect={item => {this.updateSearchModule(item)}}
+                    onItemSelect={item => {this.updateSearchModule(item)
+                                            console.log("exam: "+item.exam)}}
                     containerStyle={{ padding: 5 }}
                     textInputStyle={{
                         padding: 12,
@@ -408,7 +409,7 @@ class AddModule extends Component {
                     this.state.navigation.setParams({modules: this.state.chosenModule});
                     this.state.navigation.push('ExpandCalendar',{modules:this.state.chosenModule})
                 }}>
-                    <Text style={{color:'#53D3EF'}}>+ Add module to calendar</Text>
+                    <Text style={{color:'#53D3EF'}}>Switch to calendar</Text>
                 </TouchableOpacity>
                 <Modal animationType="fade" visible={this.state.isModalVisible}
                        onRequestClose={() => this.setModalVisible(false)}>
