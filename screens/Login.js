@@ -56,8 +56,7 @@ class Login extends Component {
                     this.props.navigation.push('PlanSyek', {id:currId[0].id,email:this.state.currEmail})
                 }
             })
-            .catch(error => {console.log(error)
-                alert(error)})
+            .catch(error => {console.log(error)})
     }
 
     render() {
