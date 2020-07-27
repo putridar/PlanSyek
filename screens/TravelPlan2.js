@@ -278,16 +278,20 @@ const styles = StyleSheet.create ({
         alignSelf: 'center',
         fontSize: 16,
         width: 200,
-        height: 50,
+        //height: 50,
         marginTop: 50,
         borderRadius: 5,
-        marginRight: 10
+        marginRight: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     addButText: {
         textAlign: 'center',
         fontSize: 18,
         width: 200,
-        height: 50
+        height: 50,
+        alignSelf:'center',
+        justifyContent: 'center'
     },
     sejajar: {
         flexDirection: 'row'

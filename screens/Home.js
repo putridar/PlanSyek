@@ -122,27 +122,27 @@ export default class Home extends Component {
         }
         if (sch.length === 0){
             hsl = [{duration: "1h",
-                hour:"1500",
+                hour:"1200",
                 schedule:{
                     ClassNo:"01",
                     DayText:"Monday",
-                    EndTime:"1600",
+                    EndTime:"1300",
                     LessonType:"Tutorial",
-                    StartTime: "1500",
+                    StartTime: "1200",
                     Venue:"AS3-0620",
                     WeekText:"Every Week",
-                    title: "CS1010S Tutorial"}},
+                    title: "MA1101R Tutorial"}},
                 {duration: "1h",
-                    hour:"1200",
+                    hour:"1500",
                     schedule:{
                         ClassNo:"01",
                         DayText:"Monday",
-                        EndTime:"1300",
+                        EndTime:"1600",
                         LessonType:"Tutorial",
-                        StartTime: "1200",
+                        StartTime: "1500",
                         Venue:"AS3-0620",
                         WeekText:"Every Week",
-                        title: "MA1101R Tutorial"}}]
+                        title: "CS1010S Tutorial"}}]
         }
         this.setState({agenda:hsl})
     }
