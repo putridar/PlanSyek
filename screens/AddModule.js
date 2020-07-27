@@ -359,6 +359,7 @@ class AddModule extends Component {
         })
         this.setState({chosenModule: newItems})
         this.updateDatabase(newItems)
+        alert("Module deleted: "+this.state.editedItem.name)
     }
 
     render () {
@@ -475,7 +476,6 @@ class AddModule extends Component {
                             <TouchableOpacity style ={styles.deleteButton}
                                               onPress={()=>{
                                                   this.handleDeleteItem(this.state.editedItem)
-                                                  alert("Module deleted: "+this.state.editedItem.name)
                                                   this.setModalVisible(false)
                                               }}>
                                 <Text style={{textAlign:'center'}}>Delete</Text>
