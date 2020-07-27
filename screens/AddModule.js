@@ -344,6 +344,16 @@ class AddModule extends Component {
     }
 
     handleDeleteItem = (deletedItem) => {
+        Alert.alert('Confirm Delete','Are you sure?',[
+            {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+            },
+            { text: "OK", onPress: () => this.deleteNotif(deletedItem) }
+        ])
+    }
+
+    deleteNotif=(deletedItem)=>{
         let newItems = this.state.chosenModule.filter((item) => {
             return item != deletedItem
         })
