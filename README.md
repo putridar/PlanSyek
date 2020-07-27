@@ -2,10 +2,9 @@
 
 Plansyek is a mobile application that functions for NUS students to plan their day, which includes the classes to go and the schedule for it. The four main features are the schedule of the day, reminder for tasks, the notifications for reminding, and the travel plan for indicating the routes. We implement this application with the help of NUSMods API for the data of classes and locations.
 
-**Before using our app, please install:**
-**- node.js**
-**- yarn**
-**- expo (install it in your phone, you can find it in playstore)**
+**Before using our app, please install node.js and yarn**
+
+**You will also need to install expo in your phone (you can find it in playstore)**
 
 If you have sign up before (for milestone 2), please sign up again
 
