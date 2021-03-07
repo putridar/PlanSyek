@@ -14,7 +14,7 @@ If you have sign up before (for milestone 2), please sign up again
 
 How to use our app:
 
-1. Open cmd and clone the repository (git clone https://github.com/putridar/plansyek_final.git)
+1. Open cmd and clone the repository (git clone https://github.com/putridar/plansyek.git)
 2. Navigate to the plansyek_final folder (use cd)
 3. Type npm install -g expo-cli
 4. Type npm install react-native
